@@ -1,28 +1,18 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { GlobalStyle } from './ClobalStyle';
-import { ContactForm } from './ContactForm/ContactForm';
-import { ContactList } from './ContactsList/ContactsList';
-import { Filter } from './Filter/Filter';
-import {
-  selectError,
-  selectIsLoading,
-  selectVisibleContacts,
-} from 'redux/selectors';
+
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
-import { Loader } from './Loader';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import RegisterPage from 'pages/RegisterPage';
 import LogInPage from 'pages/LogInPage';
 import HomePage from 'pages/HomePage';
+import ContactsPage from 'pages/ContactsPage';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectVisibleContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -36,7 +26,7 @@ export const App = () => {
             <Route index element={<HomePage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LogInPage />} />
-            <Route path="/contacts" element={<div>Contacts</div>} />
+            <Route path="/contacts" element={<ContactsPage />} />
             <Route path="*" element={<HomePage />} />
           </Route>
         </Routes>
