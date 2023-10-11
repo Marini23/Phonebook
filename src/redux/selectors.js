@@ -8,9 +8,12 @@ export const selectError = state => state.contacts.error;
 
 export const selectFilter = state => state.filter.filter;
 
-export const selectIsLoggedIn = state => state.uath.isLoggedIn;
+export const selectIsLoggedIn = state => state.auth.isLoggedIn;
 
 export const selectUser = state => state.auth.user;
+
+export const selectUserName = state => state.auth.user.name;
+export const selectUserEmail = state => state.auth.user.email;
 
 export const selectVisibleContacts = createSelector(
   [selectContacts, selectFilter],

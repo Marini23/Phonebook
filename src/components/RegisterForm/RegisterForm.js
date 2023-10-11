@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/operations';
+import { SignUpForm, Input, BtnSubmit } from './RegisterForm.styled';
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
@@ -32,10 +33,10 @@ export default function RegisterForm() {
   return (
     <div>
       <h1>SIGN UP</h1>
-      <form onSubmit={handleSubmit}>
+      <SignUpForm onSubmit={handleSubmit}>
         <label>
           Name
-          <input
+          <Input
             type="text"
             name="name"
             value={name}
@@ -45,7 +46,7 @@ export default function RegisterForm() {
         </label>
         <label>
           Email
-          <input
+          <Input
             type="email"
             name="email"
             value={email}
@@ -55,7 +56,7 @@ export default function RegisterForm() {
         </label>
         <label>
           Password
-          <input
+          <Input
             type="password"
             name="password"
             value={password}
@@ -63,8 +64,8 @@ export default function RegisterForm() {
             autoComplete="current-password"
           />
         </label>
-        <button type="submit">Sign In</button>
-      </form>
+        <BtnSubmit type="submit">Sign In</BtnSubmit>
+      </SignUpForm>
     </div>
   );
 }

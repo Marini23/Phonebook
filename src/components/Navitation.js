@@ -1,11 +1,6 @@
-import { Navigation } from 'components/Navitation';
-import UserMenu from 'components/UserMenu/UserMenu';
 import { useSelector } from 'react-redux';
-import { Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { selectIsLoggedIn } from 'redux/selectors';
-import { Header } from './Layout.styled';
-import { AuthNav } from 'components/AuthNav';
-
 // import {
 //   Breadcrumb,
 //   BreadcrumbItem,
@@ -13,7 +8,7 @@ import { AuthNav } from 'components/AuthNav';
 //   BreadcrumbSeparator,
 // } from '@chakra-ui/react';
 
-export const Layout = () => {
+export const Navigation = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   //   return (
   //     <div>
@@ -35,12 +30,20 @@ export const Layout = () => {
   //     );
 
   return (
-    <div>
-      <Header>
-        <Navigation />
-        {isLoggedIn ? <UserMenu /> : <AuthNav />}
-      </Header>
-      <Outlet />
-    </div>
+    <nav>
+      <Link to="/">Home</Link>
+      {isLoggedIn && <Link to="/contacts">Contacts</Link>}
+    </nav>
+    // <ul>
+    //   <li>
+    //     <Link to="/register">SignUp</Link>
+    //   </li>
+    //   <li>
+    //     <Link to="/login">LogIn</Link>
+    //   </li>
+    //   <li>
+    //     <Link to="/contacts">Contacts</Link>
+    //   </li>
+    // </ul>
   );
 };
