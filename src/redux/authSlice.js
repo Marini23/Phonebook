@@ -1,4 +1,4 @@
-import { logIn, logOut, register } from './operations';
+import { fetchCurrentUser, logIn, logOut, register } from './operations';
 
 const { createSlice } = require('@reduxjs/toolkit');
 
@@ -8,6 +8,7 @@ const authSlice = createSlice({
     user: { name: null, email: null, password: null },
     token: null,
     isLoggedIn: false,
+    // isRefreshing: false,
   },
   extraReducers: builder =>
     builder
@@ -21,10 +22,22 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
-      .addCase(logOut.fulfilled, (state, action) => {
+      .addCase(logOut.fulfilled, state => {
         state.user = { name: null, email: null, password: null };
         state.token = null;
         state.isLoggedIn = false;
+      })
+      .addCase(fetchCurrentUser.pending, state => {
+        // state.isRefreshing = true;
+      })
+      .addCase(fetchCurrentUser.fulfilled, (state, action) => {
+        console.log(`2`);
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        // state.isRefreshing = false;
+      })
+      .addCase(fetchCurrentUser.rejected, state => {
+        // state.isRefreshing = false;
       }),
 });
 

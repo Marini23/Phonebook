@@ -8,7 +8,7 @@ export default function UserMenu() {
 
   return (
     <div>
-      <p>{email}</p>
+      <p>Welcome, {email}</p>
       <button type="button" onClick={() => dispatch(logOut())}>
         Logout
       </button>
