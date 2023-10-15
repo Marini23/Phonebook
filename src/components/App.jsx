@@ -20,7 +20,6 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
-    console.log(`3`);
   }, [dispatch]);
 
   return isRefreshing ? (

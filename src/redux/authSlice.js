@@ -8,7 +8,7 @@ const authSlice = createSlice({
     user: { name: null, email: null, password: null },
     token: null,
     isLoggedIn: false,
-    // isRefreshing: false,
+    isRefreshing: false,
   },
   extraReducers: builder =>
     builder
@@ -28,16 +28,15 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(fetchCurrentUser.pending, state => {
-        // state.isRefreshing = true;
+        state.isRefreshing = true;
       })
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
-        console.log(`2`);
         state.user = action.payload;
         state.isLoggedIn = true;
-        // state.isRefreshing = false;
+        state.isRefreshing = false;
       })
       .addCase(fetchCurrentUser.rejected, state => {
-        // state.isRefreshing = false;
+        state.isRefreshing = false;
       }),
 });
 

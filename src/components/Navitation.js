@@ -1,15 +1,30 @@
+import { Box, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectIsLoggedIn } from 'redux/selectors';
 
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  console.log(isLoggedIn);
 
   return (
     <nav>
-      <Link to="/">Home</Link>
-      {isLoggedIn && <Link to="/contacts">Contacts</Link>}
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'start',
+          gap: 7,
+        }}
+      >
+        <Link to="/">
+          <Typography color="#fff">HOME</Typography>
+        </Link>
+        {isLoggedIn && (
+          <Link to="/contacts">
+            <Typography color="#fff">MY CONTACTS</Typography>
+          </Link>
+        )}
+      </Box>
     </nav>
   );
 };

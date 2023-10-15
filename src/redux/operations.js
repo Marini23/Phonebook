@@ -16,9 +16,8 @@ export const fetchContacts = createAsyncThunk(
 
   async (_, thunkAPI) => {
     try {
-      console.log(`4`);
       const response = await axios.get('/contacts');
-      console.log(`5`);
+
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -94,7 +93,6 @@ export const fetchCurrentUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
-    console.log(persistedToken);
 
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
@@ -102,7 +100,7 @@ export const fetchCurrentUser = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const response = await axios.get(`/users/current`);
-      console.log(`1`);
+
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
