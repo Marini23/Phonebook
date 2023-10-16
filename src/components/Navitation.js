@@ -11,7 +11,6 @@ export const Navigation = () => {
       <Box
         sx={{
           display: 'flex',
-          flexWrap: 'wrap',
           justifyContent: 'start',
           gap: 7,
         }}

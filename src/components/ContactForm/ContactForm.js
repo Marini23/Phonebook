@@ -10,7 +10,6 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
 import { addContact } from 'redux/operations';
-
 const nameRegex = /[a-zA-Zа-яА-Я]+(([' ][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 
 const numberRegex =
@@ -34,45 +33,43 @@ export const ContactForm = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="App">
-      <Formik
-        initialValues={{ name: '', number: '' }}
-        validationSchema={formSchema}
-        onSubmit={(values, actions) => {
-          const isExist = contacts.find(
-            contact => contact.name.toLowerCase() === values.name.toLowerCase()
-          );
-          if (isExist) {
-            return alert(`${values.name} is already in contacts!`);
-          }
-          dispatch(addContact(values));
-          actions.resetForm();
-        }}
-      >
-        <StyledForm>
-          <Label htmlFor="name">
-            Name
-            <StyledField
-              type="text"
-              name="name"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-            />
-            <ErrorMsg name="name" component="div" />
-          </Label>
-          <Label htmlFor="number">
-            Number
-            <StyledField
-              type="tel"
-              name="number"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              required
-            />
-            <ErrorMsg name="number" component="div" />
-          </Label>
-          <StyledButton type="submit">Add contact</StyledButton>
-        </StyledForm>
-      </Formik>
-    </div>
+    <Formik
+      initialValues={{ name: '', number: '' }}
+      validationSchema={formSchema}
+      onSubmit={(values, actions) => {
+        const isExist = contacts.find(
+          contact => contact.name.toLowerCase() === values.name.toLowerCase()
+        );
+        if (isExist) {
+          return alert(`${values.name} is already in contacts!`);
+        }
+        dispatch(addContact(values));
+        actions.resetForm();
+      }}
+    >
+      <StyledForm>
+        <Label htmlFor="name">
+          Name
+          <StyledField
+            type="text"
+            name="name"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
+          />
+          <ErrorMsg name="name" component="div" />
+        </Label>
+        <Label htmlFor="number">
+          Number
+          <StyledField
+            type="tel"
+            name="number"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+          />
+          <ErrorMsg name="number" component="div" />
+        </Label>
+        <StyledButton type="submit">Add contact</StyledButton>
+      </StyledForm>
+    </Formik>
   );
 };

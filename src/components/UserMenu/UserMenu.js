@@ -11,7 +11,6 @@ export default function UserMenu() {
     <Box
       sx={{
         display: 'flex',
-        flexWrap: 'wrap',
         justifyContent: 'start',
         alignItems: 'center',
         alignContent: 'center',

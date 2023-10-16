@@ -27,17 +27,18 @@ export const Layout = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <AppBar>
+        <AppBar position="fixed">
           <Box
             sx={{
               display: 'flex',
-              flexWrap: 'wrap',
+              flexWrap: 'nowrap',
+              flexDirection: 'row',
               height: 60,
               justifyContent: 'space-between',
               alignItems: 'center',
               alignContent: 'center',
-
               mx: 2,
+              zIndex: 1,
             }}
           >
             <Navigation />
