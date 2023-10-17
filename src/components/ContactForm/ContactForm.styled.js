@@ -2,14 +2,14 @@ import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
 
 export const StyledForm = styled(Form)`
-  width: 600px;
+  width: 500px;
   border-radius: 6px;
   border: 1px solid black;
   padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin: 30px;
+  margin: 0 auto;
 `;
 
 export const Label = styled.label`

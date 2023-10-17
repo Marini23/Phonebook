@@ -18,6 +18,7 @@ margin-left: 30px;
 }
 h2 {
 font-size: 30px;
-margin-left: 30px; 
+// margin-left: 30px; 
+padding-left: 30px;
 }
 `;

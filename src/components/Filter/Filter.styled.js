@@ -13,8 +13,9 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  width: 300px;
+  width: 600px;
+  height: 40px;
   padding: 5px;
   color: black;
-  font-size: 16px;
+  font-size: 18px;
 `;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ListContacts = styled.ul`
-  width: 500px;
+  width: 700px;
   display: flex;
   flex-direction: column;
   gap: 4px;
