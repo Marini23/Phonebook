@@ -40,6 +40,24 @@ export const addContact = createAsyncThunk(
   }
 );
 
+export const editContact = createAsyncThunk(
+  'contacts/editContact',
+  async (newFormValues, thunkAPI) => {
+    try {
+      const contactId = newFormValues.id;
+
+      const response = await axios.patch(`/contacts/${contactId}`, {
+        name: newFormValues.name,
+        number: newFormValues.number,
+      });
+
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (contactId, thunkAPI) => {
