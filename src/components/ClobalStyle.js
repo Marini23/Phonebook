@@ -14,11 +14,12 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
 
 h1 {
 font-size: 34px;
-margin-left: 30px;
+// margin-left: 30px;
 }
 h2 {
-font-size: 30px;
+font-size: 36px;
+color: #001e8e;
 // margin-left: 30px; 
-padding-left: 30px;
+// padding-left: 30px;
 }
 `;

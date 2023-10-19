@@ -1,4 +1,4 @@
-import { Box, IconButton } from '@mui/material';
+import { Box, Container, CssBaseline, IconButton } from '@mui/material';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactsList/ContactsList';
 import { Filter } from 'components/Filter/Filter';
@@ -13,6 +13,7 @@ import {
 } from 'redux/selectors';
 import AddIcon from '@mui/icons-material/Add';
 import { ModalWindow } from 'components/Modal';
+import Image from 'bg-contactslist.jpg';
 
 export default function ContactsPage() {
   const dispatch = useDispatch();
@@ -32,48 +33,62 @@ export default function ContactsPage() {
   return (
     <Box
       sx={{
-        position: 'relative',
-        top: 60,
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
         display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignContent: 'center',
-        mx: 2,
-        gap: 5,
+        top: 60,
+        backgroundImage: `url(${Image})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
       }}
     >
-      <div>
+      <Container component="main">
+        <CssBaseline />
         <Box
           sx={{
             display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            alignContent: 'center',
-            width: 618,
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'start',
+            width: 620,
+            my: 0,
+            mx: 'auto',
           }}
         >
-          <h2>Contacts</h2>
-          <IconButton
-            edge="end"
-            aria-label="add"
-            type="button"
-            onClick={toggleModalAdd}
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignContent: 'center',
+              width: 620,
+              gap: 3,
+            }}
           >
-            <AddIcon style={{ fontSize: 40, color: '#ff6f00' }} />
-          </IconButton>
+            <h2>Contacts</h2>
+            <IconButton
+              edge="end"
+              aria-label="add"
+              type="button"
+              onClick={toggleModalAdd}
+            >
+              <AddIcon style={{ fontSize: 58, color: '#008c3f' }} />
+            </IconButton>
+          </Box>
+          <Filter />
+          {isLoading && !error && <Loader />}
+          {error && <p>{error}</p>}
+          {contacts.length > 0 && !isLoading && !error && <ContactList />}
+          {isModalOpen && (
+            <ModalWindow isClose={toggleModalAdd} open={isModalOpen}>
+              <ContactForm />
+            </ModalWindow>
+          )}
         </Box>
-        <Filter />
-        {isLoading && !error && <Loader />}
-        {error && <p>{error}</p>}
-        {contacts.length > 0 && !isLoading && !error && <ContactList />}
-        {isModalOpen && (
-          <ModalWindow isClose={toggleModalAdd} open={isModalOpen}>
-            <ContactForm />
-          </ModalWindow>
-        )}
-      </div>
+      </Container>
     </Box>
   );
 }

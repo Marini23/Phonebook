@@ -9,11 +9,10 @@ export const Label = styled.label`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 10px 30px;
 `;
 
 export const Input = styled.input`
-  width: 600px;
+  width: 620px;
   height: 40px;
   padding: 5px;
   color: black;

@@ -36,7 +36,6 @@ export const ContactsListItem = ({ contact }) => {
     <div>
       <ListItem
         sx={{
-          width: 600,
           height: 60,
           border: '1px solid rgba(10, 10, 10, 0.2)',
           borderRadius: 2,
@@ -49,7 +48,7 @@ export const ContactsListItem = ({ contact }) => {
       >
         <ListItemAvatar>
           <Avatar>
-            <AccountCircleIcon style={{ fontSize: 68, color: '#ff6f00' }} />
+            <AccountCircleIcon style={{ fontSize: 68, color: '#4f6599' }} />
           </Avatar>
         </ListItemAvatar>
         <ListItemText
@@ -62,12 +61,12 @@ export const ContactsListItem = ({ contact }) => {
             mx: 2,
           }}
           primary={
-            <Typography variant="h6" style={{ color: '#ff6f00' }}>
+            <Typography variant="h6" style={{ color: '#001e8e' }}>
               {name}
             </Typography>
           }
           secondary={
-            <Typography variant="h6" style={{ color: '#ff6f00' }}>
+            <Typography variant="h6" style={{ color: '#001e8e' }}>
               {number}
             </Typography>
           }
@@ -78,7 +77,7 @@ export const ContactsListItem = ({ contact }) => {
           type="button"
           onClick={toggleModalEdit}
         >
-          <ModeEditIcon style={{ fontSize: 36 }} />
+          <ModeEditIcon style={{ fontSize: 36, color: '#f1ac0f' }} />
         </IconButton>
         <IconButton
           edge="end"
@@ -86,7 +85,7 @@ export const ContactsListItem = ({ contact }) => {
           type="button"
           onClick={() => dispatch(deleteContact(id))}
         >
-          <ClearIcon style={{ fontSize: 36 }} />
+          <ClearIcon style={{ fontSize: 36, color: '#e54a28' }} />
         </IconButton>
       </ListItem>
       {isModalOpen && (
