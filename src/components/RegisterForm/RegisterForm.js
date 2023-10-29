@@ -120,7 +120,7 @@ export default function RegisterForm() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign Up
+                Register
               </Button>
             </Box>
           </Box>
