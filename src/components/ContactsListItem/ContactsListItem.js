@@ -90,7 +90,10 @@ export const ContactsListItem = ({ contact }) => {
       </ListItem>
       {isModalOpen && (
         <ModalWindow isClose={toggleModalEdit} open={isModalOpen}>
-          <EditContactForm selectedContact={selectedContact} />
+          <EditContactForm
+            selectedContact={selectedContact}
+            isClose={toggleModalEdit}
+          />
         </ModalWindow>
       )}
     </div>

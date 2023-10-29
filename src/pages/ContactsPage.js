@@ -84,7 +84,7 @@ export default function ContactsPage() {
           {contacts.length > 0 && !isLoading && !error && <ContactList />}
           {isModalOpen && (
             <ModalWindow isClose={toggleModalAdd} open={isModalOpen}>
-              <ContactForm />
+              <ContactForm isClose={toggleModalAdd} />
             </ModalWindow>
           )}
         </Box>

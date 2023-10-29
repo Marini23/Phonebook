@@ -28,7 +28,7 @@ const formSchema = Yup.object().shape({
     .required('Required'),
 });
 
-export const ContactForm = () => {
+export const ContactForm = ({ isClose }) => {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
@@ -45,6 +45,7 @@ export const ContactForm = () => {
         }
         dispatch(addContact(values));
         actions.resetForm();
+        isClose();
       }}
     >
       <StyledForm>

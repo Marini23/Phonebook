@@ -1,11 +1,11 @@
 import { Box, Typography, Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from 'redux/operations';
-import { selectUserEmail } from 'redux/selectors';
+import { selectUserEmail, selectUserName } from 'redux/selectors';
 
 export default function UserMenu() {
   const dispatch = useDispatch();
-  const email = useSelector(selectUserEmail);
+  const name = useSelector(selectUserName);
 
   return (
     <Box
@@ -17,7 +17,7 @@ export default function UserMenu() {
         gap: 7,
       }}
     >
-      <Typography color="#fff">Welcome, {email}</Typography>
+      <Typography color="#fff">Welcome, {name}</Typography>
       <Button
         sx={{ color: '#fff' }}
         variant="text"
